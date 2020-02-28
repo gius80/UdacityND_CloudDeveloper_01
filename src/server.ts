@@ -31,11 +31,16 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util';
 
   //! END @TODO1
   app.get("/filteredimage", async (req, res) => {
-    const image_url = req.query.image_url;
-    if (!image_url) {
+    const imageInputUrl = req.query.image_url;
+    if (!imageInputUrl) {
       return res.status(400).send({ message: 'Missing image_url' });
     }
-    res.sendStatus(200);
+    try {
+      const imageOutputUrl = await filterImageFromURL(imageInputUrl);
+      res.sendFile(imageOutputUrl);
+    } catch (err) {
+      res.status(400).send({ message: 'Invalid input image' });
+    }
   });
 
   // Root Endpoint
