@@ -6,15 +6,25 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:8082/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
+			"name": "http://localhost:8082/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg/720px-An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "unsafe_fake_token_123456",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
+					"raw": "http://{{EB_URL}}/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg/720px-An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg",
 					"protocol": "http",
 					"host": [
-						"{{HOST}}"
+						"{{EB_URL}}"
 					],
 					"path": [
 						"filteredimage"
@@ -22,7 +32,7 @@
 					"query": [
 						{
 							"key": "image_url",
-							"value": "https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg"
+							"value": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg/720px-An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg"
 						}
 					]
 				}
@@ -30,6 +40,16 @@
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "unsafe_fake_token_123456",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
@@ -54,9 +74,15 @@
 	],
 	"variable": [
 		{
-			"id": "812f7420-2406-42b0-b707-37533ff1b278",
+			"id": "21498a4f-d2f3-40ed-9acc-3832ae437c9e",
 			"key": "HOST",
 			"value": "localhost:8082",
+			"type": "string"
+		},
+		{
+			"id": "5304deee-48c9-4d99-8194-56afc7231e4a",
+			"key": "EB_URL",
+			"value": "image-filter-dev.eu-west-1.elasticbeanstalk.com",
 			"type": "string"
 		}
 	],
